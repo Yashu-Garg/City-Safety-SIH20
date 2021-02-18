@@ -1,0 +1,94 @@
+{% extends 'home.html' %}
+{% block content %}
+ <form class="form-inline custom_form" action="" method="post">
+      {% csrf_token %}
+<!--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+      <select class="form-control" name="district" id = "myList">
+          <option value="1">Select District</option>
+             {% for district in list %}
+           <option  value = "{{district}}">{{district}}</option>
+           {% endfor %}
+      </select>
+    <button class="btn btn-info my-2 my-sm-0 search_button" type="submit">Search</button>
+  </form>
+<h3 align="center" ><u class=" mb-3 pl-3 pr-3 " > Crime Rates of {{district}}</u></h3>
+<!--<div class="col-sm-4">-->
+<!--<canvas id="myChart" width="80" height="50"></canvas>-->
+<!--</div>-->
+<!--<div class="col-sm-4">-->
+<!--<canvas id="PieChart" width="80" height="50"></canvas>-->
+<!--    </div>-->
+<!--d-flex justify-content-between mt-6-->
+<div class="container_dist">
+<div class="col-md-6 mt-6 dist">
+    <div class="card">
+<canvas id="myChart" width="80" height="50"></canvas>
+</div>
+    </div>
+<div class="col-md-6  dist">
+    <div class="card">
+<canvas id="PieChart" width="80" height="50"></canvas>
+</div>
+    </div>
+    </div>
+<script>
+<!--var label="{{labels}}";-->
+<!--console.log(label);-->
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['MURDER','RAPE','THEFT','ACCIDENT','ROBBERY'],
+        datasets: [{
+            label: 'Crime Rates',
+            data: {{ data }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx2 = document.getElementById('PieChart').getContext('2d');
+var myPieChart = new Chart(ctx2, {
+    type: 'doughnut',
+    data:{
+    datasets: [{
+    label: 'Crime Rates',
+        data:  {{ data }},
+        "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)",'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)']
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels:  ['MURDER','RAPE','THEFT','ACCIDENT','ROBBERY'],
+
+}
+<!--    options: options-->
+});
+</script>
+{% endblock %}

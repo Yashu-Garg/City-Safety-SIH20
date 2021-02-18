@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+ <div class="row justify-content-center">
+
+        <div class="col-6 ">
+            <div class="card">
+                <div class="card-body">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div align="center">
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="#" class="ml-3">Forgot your Password?</a>
+        </div>
+        </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}

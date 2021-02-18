@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block content %}
+<h1>Police data here</h1>
+{%  for users in data %}
+<h6>{{users.City}} {{users.person.name}}</h6>
+{% endfor %}
+<h6>In order to get details use users.Latitude users.Longitue users.City users.Action_taken users.Action_taken_at users.Added_at</h6>
+<h6>For users personal details use the var names users.person.attribute you want to use Go to models.py to see what attributes can use
+Like users.person.name users.person.EmailId etc and remember to put all these in double opening and closing braces and also in the for loop written above in html
+</h6>
+{% endblock %}

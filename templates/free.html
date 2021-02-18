@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block content %}
+{% load static %}
+<h1>Testing for Audio CounterPart</h1>
+<a href="{% static  audio  %}">Click Me</a>
+<h1>{{ audio }}</h1>
+
+<video width="320" height="240" controls>
+  <source
+  src="{% static  audio  %}"
+  type='video/3gpp; codecs="mp4v.20.8, samr"'>play
+</source>
+</video>
+<audio controls>
+  <source
+  src="{% static  audio  %}"
+  type='video/3gpp; codecs="mp4v.20.8, samr"'>play
+</source>
+</audio>
+{% endblock %}
+
+sih/static/Audio/All_Black_Ft_Raftaar_1.mp3

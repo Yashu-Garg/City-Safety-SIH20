@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<form method='post' action='/test/'>
+   {% csrf_token %}
+    <input id='lat' type="text" name="lat" value="hey()" hidden>
+    <input id='lng' type="text" name="lng" value="hey()" hidden>
+    <button id="geolocation-button" type="submit">Click me</button>
+</form>
+<button class="btn btn-outline-primary my-2 my-sm-0" type="submit" ><a href="/distress/">Distress Button</a></button>
+<script>
+
+window.onload=function(){
+if (window.navigator && window.navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(onGeolocateSuccess, onGeolocateError);
+  }
+
+function onGeolocateSuccess(coordinates) {
+  const { latitude, longitude } = coordinates.coords;
+  document.getElementById('lat').value=latitude;
+ document.getElementById('lng').value=longitude;
+  console.log('Found coordinates: ', latitude, longitude);
+
+
+
+
+<!--  form={'lat':latitude,'lng':longitude,csrfmiddlewaretoken: '{{ csrf_token }}'}-->
+
+      alert('hey');
+}
+
+function onGeolocateError(error) {
+  console.warn(error.code, error.message);
+
+  if (error.code === 1) {
+    // they said no
+  } else if (error.code === 2) {
+    // position unavailable
+  } else if (error.code === 3) {
+    // timeout
+  }
+}
+}
+
+</script>
+{% endblock %}

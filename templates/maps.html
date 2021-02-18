@@ -1,0 +1,543 @@
+{% extends 'home.html' %}
+{% block content %}
+<style>
+    <!--#map{
+    margin-top: 30px;
+    height:500px;
+    width:1200px;
+    }-->
+    body{
+    width: 100%;
+    }
+</style>
+<h1 align="center" class="display-1 bg-dark pb-4 text-white mb-4">Google maps</h1>
+<div class="container">
+ <h2> You are currently at {{lat}}  {{lng}}</h2>
+</div>
+
+<button type="button" class="btn btn-dark btn-lg btn-block text-white" id="watch-button">Watch Button</button>
+<button type="button" class="btn btn-dark btn-lg btn-block text-white mb-6" id="clear-watch-button">Clear Watch button</button>
+
+<!--<h1>{{name}}</h1>-->
+<!--<p>For personal details use user.name for name user.Aadhar_Number,user.ContactNumber,user.EmailId,user.Age,user.RecoveryMail,user.RecoveryNumber and put these Variables in double opening closing braces-->
+<!--  Uncomment when not required</p>-->
+<!--<p>{{user.Aadhar_Number}} {{user.ContactNumber}}</p>-->
+
+
+    <div class="folium-map" id="map_94e340db6ba74f2c8f2f0e0b4b754c41" ></div>
+<script>
+
+            var map_94e340db6ba74f2c8f2f0e0b4b754c41 = L.map(
+                "map_94e340db6ba74f2c8f2f0e0b4b754c41",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_ea76c8504138425eb95a7477e0cc5f66 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var marker_6729ae7d9081490c94d8b5c4ade4acb7 = L.marker(
+                [31.63398, 74.87226],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_7f3733df1479445fb2a2c4e6ce4eca57 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkgreen", "prefix": "glyphicon"}
+            );
+            marker_6729ae7d9081490c94d8b5c4ade4acb7.setIcon(icon_7f3733df1479445fb2a2c4e6ce4eca57);
+
+
+        var popup_57f6716466774e819b008d43ca513369 = L.popup({"maxWidth": "100%"});
+
+
+            var html_5fbbd3ac4d3f4f7ea13d0140847a6523 = $(`<div id="html_5fbbd3ac4d3f4f7ea13d0140847a6523" style="width: 100.0%; height: 100.0%;">Amritsar</div>`)[0];
+            popup_57f6716466774e819b008d43ca513369.setContent(html_5fbbd3ac4d3f4f7ea13d0140847a6523);
+
+
+        marker_6729ae7d9081490c94d8b5c4ade4acb7.bindPopup(popup_57f6716466774e819b008d43ca513369)
+        ;
+
+
+
+
+            marker_6729ae7d9081490c94d8b5c4ade4acb7.bindTooltip(
+                `<div>
+                     2
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_dbfcb7cfd5bd4c96a4e8cbff1ec0bda4 = L.marker(
+                [32.26434, 75.64211],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_f420e85bfd99410ca945c50c19281822 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_dbfcb7cfd5bd4c96a4e8cbff1ec0bda4.setIcon(icon_f420e85bfd99410ca945c50c19281822);
+
+
+        var popup_af2c3a91bd704a3a81447896907f30c9 = L.popup({"maxWidth": "100%"});
+
+
+            var html_63db0c30ba6c489bbcf27f7fa99ae666 = $(`<div id="html_63db0c30ba6c489bbcf27f7fa99ae666" style="width: 100.0%; height: 100.0%;">Pathankot</div>`)[0];
+            popup_af2c3a91bd704a3a81447896907f30c9.setContent(html_63db0c30ba6c489bbcf27f7fa99ae666);
+
+
+        marker_dbfcb7cfd5bd4c96a4e8cbff1ec0bda4.bindPopup(popup_af2c3a91bd704a3a81447896907f30c9)
+        ;
+
+
+
+
+            marker_dbfcb7cfd5bd4c96a4e8cbff1ec0bda4.bindTooltip(
+                `<div>
+                     4
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_d3ec3116c84045978121f2e48bffd752 = L.marker(
+                [30.34139, 76.40184],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_bfc2d661cc614dc9bcb180a7a2a2182f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d3ec3116c84045978121f2e48bffd752.setIcon(icon_bfc2d661cc614dc9bcb180a7a2a2182f);
+
+
+        var popup_ce95c1fbedc940c7a7d3d278d1925848 = L.popup({"maxWidth": "100%"});
+
+
+            var html_82b41337d524468fb9439b2c3cf7e7c8 = $(`<div id="html_82b41337d524468fb9439b2c3cf7e7c8" style="width: 100.0%; height: 100.0%;">PATIALA</div>`)[0];
+            popup_ce95c1fbedc940c7a7d3d278d1925848.setContent(html_82b41337d524468fb9439b2c3cf7e7c8);
+
+
+        marker_d3ec3116c84045978121f2e48bffd752.bindPopup(popup_ce95c1fbedc940c7a7d3d278d1925848)
+        ;
+
+
+
+
+            marker_d3ec3116c84045978121f2e48bffd752.bindTooltip(
+                `<div>
+                     1
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_628eedc4486e4000b3ab00ed9b200ade = L.marker(
+                [30.96896, 76.52695],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_06086739b0184ead88e5cbe5815b34d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_628eedc4486e4000b3ab00ed9b200ade.setIcon(icon_06086739b0184ead88e5cbe5815b34d8);
+
+
+        var popup_db924d5227334162a084efe49a900d52 = L.popup({"maxWidth": "100%"});
+
+
+            var html_34dd4ec7da974130bf2f31b229c6da63 = $(`<div id="html_34dd4ec7da974130bf2f31b229c6da63" style="width: 100.0%; height: 100.0%;">ROPAR</div>`)[0];
+            popup_db924d5227334162a084efe49a900d52.setContent(html_34dd4ec7da974130bf2f31b229c6da63);
+
+
+        marker_628eedc4486e4000b3ab00ed9b200ade.bindPopup(popup_db924d5227334162a084efe49a900d52)
+        ;
+
+
+
+
+            marker_628eedc4486e4000b3ab00ed9b200ade.bindTooltip(
+                `<div>
+                     4
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_e490d23e9ebe46519b4e9a1ab23674dd = L.marker(
+                [30.21292, 74.93317],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_81b25b214e5b4ac7b19f6e902c8ecbbb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightred", "prefix": "glyphicon"}
+            );
+            marker_e490d23e9ebe46519b4e9a1ab23674dd.setIcon(icon_81b25b214e5b4ac7b19f6e902c8ecbbb);
+
+
+        var popup_c8e9cc7e1bff4213abfc2c41b16fb65d = L.popup({"maxWidth": "100%"});
+
+
+            var html_dc2af7ca25ff41c083dedc721c78bcd4 = $(`<div id="html_dc2af7ca25ff41c083dedc721c78bcd4" style="width: 100.0%; height: 100.0%;">Bathindha</div>`)[0];
+            popup_c8e9cc7e1bff4213abfc2c41b16fb65d.setContent(html_dc2af7ca25ff41c083dedc721c78bcd4);
+
+
+        marker_e490d23e9ebe46519b4e9a1ab23674dd.bindPopup(popup_c8e9cc7e1bff4213abfc2c41b16fb65d)
+        ;
+
+
+
+
+            marker_e490d23e9ebe46519b4e9a1ab23674dd.bindTooltip(
+                `<div>
+                     3
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_31834881667542c99a9ec72dcef1e319 = L.marker(
+                [30.4087, 74.0268],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_a3636174e5df41c69fac7ce8916e5736 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkgreen", "prefix": "glyphicon"}
+            );
+            marker_31834881667542c99a9ec72dcef1e319.setIcon(icon_a3636174e5df41c69fac7ce8916e5736);
+
+
+        var popup_a64b302b55874628a9afe72404343a61 = L.popup({"maxWidth": "100%"});
+
+
+            var html_f62ee35dca354cafa592ff80bfc2fe52 = $(`<div id="html_f62ee35dca354cafa592ff80bfc2fe52" style="width: 100.0%; height: 100.0%;">Falizka</div>`)[0];
+            popup_a64b302b55874628a9afe72404343a61.setContent(html_f62ee35dca354cafa592ff80bfc2fe52);
+
+
+        marker_31834881667542c99a9ec72dcef1e319.bindPopup(popup_a64b302b55874628a9afe72404343a61)
+        ;
+
+
+
+
+            marker_31834881667542c99a9ec72dcef1e319.bindTooltip(
+                `<div>
+                     2
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_56d1b31bc65b41c686af2f15a512a8ab = L.marker(
+                [30.94099, 74.61704],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_050dd9adcaf242fab48b641491c59007 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightred", "prefix": "glyphicon"}
+            );
+            marker_56d1b31bc65b41c686af2f15a512a8ab.setIcon(icon_050dd9adcaf242fab48b641491c59007);
+
+
+        var popup_e22685642a4b40e887f5e2728396e63f = L.popup({"maxWidth": "100%"});
+
+
+            var html_88a0f132738849dc97324b0fe49c97ce = $(`<div id="html_88a0f132738849dc97324b0fe49c97ce" style="width: 100.0%; height: 100.0%;">Firozpur</div>`)[0];
+            popup_e22685642a4b40e887f5e2728396e63f.setContent(html_88a0f132738849dc97324b0fe49c97ce);
+
+
+        marker_56d1b31bc65b41c686af2f15a512a8ab.bindPopup(popup_e22685642a4b40e887f5e2728396e63f)
+        ;
+
+
+
+
+            marker_56d1b31bc65b41c686af2f15a512a8ab.bindTooltip(
+                `<div>
+                     3
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_0a252ce43830496a83c3f4fd00f11037 = L.marker(
+                [32.04194, 75.40533],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_61c34e5eefef4a6dba6cee9d5c30f13a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0a252ce43830496a83c3f4fd00f11037.setIcon(icon_61c34e5eefef4a6dba6cee9d5c30f13a);
+
+
+        var popup_f3959e54112743dcb49f05b21be2a96a = L.popup({"maxWidth": "100%"});
+
+
+            var html_e1dd604947b44c5b8a49c565e6f26ad0 = $(`<div id="html_e1dd604947b44c5b8a49c565e6f26ad0" style="width: 100.0%; height: 100.0%;">Gurdaspur</div>`)[0];
+            popup_f3959e54112743dcb49f05b21be2a96a.setContent(html_e1dd604947b44c5b8a49c565e6f26ad0);
+
+
+        marker_0a252ce43830496a83c3f4fd00f11037.bindPopup(popup_f3959e54112743dcb49f05b21be2a96a)
+        ;
+
+
+
+
+            marker_0a252ce43830496a83c3f4fd00f11037.bindTooltip(
+                `<div>
+                     1
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_ba6e31ffbea140d988bc9c43ec540b27 = L.marker(
+                [31.52417, 75.90253],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_c021e74a121c428bbb579e7f7e2a1287 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightred", "prefix": "glyphicon"}
+            );
+            marker_ba6e31ffbea140d988bc9c43ec540b27.setIcon(icon_c021e74a121c428bbb579e7f7e2a1287);
+
+
+        var popup_6b98eec774b3432eaca6b88b9f90162b = L.popup({"maxWidth": "100%"});
+
+
+            var html_9e91fc6d3f554bfcbe706230e0280f75 = $(`<div id="html_9e91fc6d3f554bfcbe706230e0280f75" style="width: 100.0%; height: 100.0%;">HOSHIAPUR</div>`)[0];
+            popup_6b98eec774b3432eaca6b88b9f90162b.setContent(html_9e91fc6d3f554bfcbe706230e0280f75);
+
+
+        marker_ba6e31ffbea140d988bc9c43ec540b27.bindPopup(popup_6b98eec774b3432eaca6b88b9f90162b)
+        ;
+
+
+
+
+            marker_ba6e31ffbea140d988bc9c43ec540b27.bindTooltip(
+                `<div>
+                     3
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_7bf3bb5aea8a4bfb93f7c5a561009aa7 = L.marker(
+                [31.32602, 75.57618],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_9daa1df15be244329e92db60cd704fdd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_7bf3bb5aea8a4bfb93f7c5a561009aa7.setIcon(icon_9daa1df15be244329e92db60cd704fdd);
+
+
+        var popup_5b175a02a6d348ac9c7ee995b1f7ceb9 = L.popup({"maxWidth": "100%"});
+
+
+            var html_f3bbb5800f734f2b9a9c3c5e87a4eb83 = $(`<div id="html_f3bbb5800f734f2b9a9c3c5e87a4eb83" style="width: 100.0%; height: 100.0%;">Jalandhar</div>`)[0];
+            popup_5b175a02a6d348ac9c7ee995b1f7ceb9.setContent(html_f3bbb5800f734f2b9a9c3c5e87a4eb83);
+
+
+        marker_7bf3bb5aea8a4bfb93f7c5a561009aa7.bindPopup(popup_5b175a02a6d348ac9c7ee995b1f7ceb9)
+        ;
+
+
+
+
+            marker_7bf3bb5aea8a4bfb93f7c5a561009aa7.bindTooltip(
+                `<div>
+                     4
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_e896878cc3b94e33b573808d9d3be061 = L.marker(
+                [31.3774, 75.3915],
+                {}
+            ).addTo(map_94e340db6ba74f2c8f2f0e0b4b754c41);
+
+
+            var icon_c6f4c7b434f443e495d8415a085057db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkgreen", "prefix": "glyphicon"}
+            );
+            marker_e896878cc3b94e33b573808d9d3be061.setIcon(icon_c6f4c7b434f443e495d8415a085057db);
+
+
+        var popup_188bea900bfb4d16b1f2a457cbc6014d = L.popup({"maxWidth": "100%"});
+
+
+            var html_e60d6b52db59431aad43ac6b52220e90 = $(`<div id="html_e60d6b52db59431aad43ac6b52220e90" style="width: 100.0%; height: 100.0%;">KAPARTHALA</div>`)[0];
+            popup_188bea900bfb4d16b1f2a457cbc6014d.setContent(html_e60d6b52db59431aad43ac6b52220e90);
+
+
+        marker_e896878cc3b94e33b573808d9d3be061.bindPopup(popup_188bea900bfb4d16b1f2a457cbc6014d)
+        ;
+
+
+
+
+            marker_e896878cc3b94e33b573808d9d3be061.bindTooltip(
+                `<div>
+                     2
+                 </div>`,
+                {"sticky": true}
+            );
+
+</script>
+<!--<div class="container mt-6 d-block w-100 " id="map">-->
+<!--</div>-->
+<div class="d-flex justify-content-between mt-6">
+<div class="col-md-6 mt-6">
+    <div class="card">
+<canvas id="myChart" width="80" height="50"></canvas>
+</div>
+    </div>
+<div class="col-md-6  ">
+    <div class="card">
+<canvas id="PieChart" width="80" height="50"></canvas>
+</div>
+    </div>
+    </div>
+<script>
+<!--var label="{{labels}}";-->
+<!--console.log(label);-->
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['MURDER','RAPE','THEFT','ACCIDENT','ROBBERY'],
+        datasets: [{
+            label: 'Crime Rates',
+            data: {{ data }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx2 = document.getElementById('PieChart').getContext('2d');
+var myPieChart = new Chart(ctx2, {
+    type: 'doughnut',
+    data:{
+    datasets: [{
+    label: 'Crime Rates',
+        data:  {{ data }},
+        "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)",'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)']
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels:  ['MURDER','RAPE','THEFT','ACCIDENT','ROBBERY'],
+
+}
+<!--    options: options-->
+});
+</script>
+<script>
+    function initMap(){
+        var options={
+        zoom:12,
+        center:{lat:{{lat}},lng:{{lng}}}
+        }
+        const position = { 'lat':{{ lat }}, 'lng':{{ lng }} };
+
+        var map=new google.maps.Map(document.getElementById('map'),options);
+        const marker = new google.maps.Marker({ map, position });
+        }
+</script>
+<script async defer src="Google Api id"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+<!--  const $geolocateButton = document.getElementById('geolocation-button');-->
+  const $watchButton =  document.getElementById('watch-button');
+  const $clearWatchButton = document.getElementById('clear-watch-button');
+
+<!--  $geolocateButton.addEventListener('click', geolocate);-->
+  $watchButton.addEventListener('click', watchLocation);
+  $clearWatchButton.addEventListener('click', clearWatch);
+});
+
+let url='https://maps.googleapis.com/maps/api/geocode/json?latlng={{lat}},{{lng}}&key=AIzaSyD-7Jx9Lj-0-UkwWc-fMBFtVK8_JWo3YLU';
+fetch(url)
+.then(response=>response.json())
+.then(data=>{
+console.log(data);
+})
+.catch(err=>console.warn(err.message));
+
+function watchLocation() {
+  const watchId = navigator.geolocation.watchPosition(onLocationChange);
+  window.localStorage.setItem('lastWatch', watchId);
+  console.log('Set watchId', watchId);
+}
+
+function onLocationChange(coordinates) {
+  const { latitude, longitude } = coordinates.coords;
+  console.log('Changed coordinates: ', latitude, longitude);
+    form={'latitude':latitude,'longitude':longitude,csrfmiddlewaretoken: '{{ csrf_token }}'}
+    $.ajax({
+url:'/test_up/',
+type:'POST',
+data:form
+});
+}
+function clearWatch() {
+  const watchId = window.localStorage.getItem('lastWatch');
+  navigator.geolocation.clearWatch(watchId);
+  console.log('Cleared watchId: ', watchId);
+}
+</script>
+
+{% endblock %}

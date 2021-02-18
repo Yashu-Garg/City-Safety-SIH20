@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeingSafe.in</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href= "{% static 'bootstrap-4.0.0-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet"  href= "{% static 'style.css' %}">
+    <script src="{% static 'jquery-3.4.1.min.js'  %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{% static 'bootstrap-4.0.0-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'scripty.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_94e340db6ba74f2c8f2f0e0b4b754c41 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+<body>
+<!--<div class = "container">-->
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-4 ">
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">-->
+    <div class="container">
+  <a class="navbar-brand" href="#" id="yashu">BeingSafe.in</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/police/">Police<span class="sr-only">(current)</span></a>
+            {% if user.is_authenticated %}
+                <li class="nav-item active">
+<!--                <button id="get-location"><a class="nav-link" href="/track/">Track Me<span class="sr-only">(current)</span></a></button>-->
+               <a class="nav-link"  id="get-location" href="/track/">Track Me<span class="sr-only">(current)</span></a>
+                <li class="nav-item active">
+<!--                <a class="nav-link" href="/maps/{{user.EmailId}}/">Distress Button<span class="sr-only">(current)</span></a>-->
+                <a class="nav-link" href="{% url 'distress' user_id=user.EmailId %}">Distress Button<span class="sr-only">(current)</span></a>
+<!--        <h1>{{user.EmailId}}</h1>-->
+            {% endif %}
+      </li>
+
+    </ul>
+      {% if user.is_authenticated %}
+          <ul class="nav navbar-nav navbar-right">
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">change password</a>
+              <a class="dropdown-item" href="/logout/">Log out</a>
+
+            </div>
+          </li>
+              </ul>
+      {% else %}
+      <ul class="nav navbar-nav navbar-right">
+           <form class="form-inline my-2 my-lg-0" >
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" ><a href="/login/">Log in</a></button>
+            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit"><a href="/register/">Sign up</a></button>
+            </form>
+      </ul>
+      {% endif %}
+  </div>
+    </div>
+</nav>
+<!--</nav>-->
+<!--{% if user.is_authenticated %}-->
+<!--<h6>{{request.user.EmailId}}</h6>-->
+<!--{% endif %}-->
+{% block content %}
+{% endblock %}
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><script>alert('{{ message }}')</script></li>
+    {% endfor %}
+{% endif %}
+<script>
+$(document).on("click","#get-location",function(){
+event.preventDefault();
+console.log('Button working fine');
+if (window.navigator && window.navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(onGeolocateSuccess, onGeolocateError);
+  }
+
+function onGeolocateSuccess(coordinates) {
+  const { latitude, longitude } = coordinates.coords;
+  console.log('Found coordinates: ', latitude, longitude);
+
+  form={'lat':latitude,'lng':longitude,csrfmiddlewaretoken: '{{ csrf_token }}'}
+$.ajax({
+url:'/save_location/',
+type:'POST',
+data:form,
+success:function(resp){
+if(resp.status!='success'){
+alert('Failed To get Location');
+alert ("resp: "+resp.name);
+}else{
+alert('Location Tracked Successfully');
+window.location.href='/maps/';
+}
+}
+});
+}
+
+function onGeolocateError(error) {
+  console.warn(error.code, error.message);
+
+  if (error.code === 1) {
+  var latitude=31.3951768392063;
+  var longitude=75.5356570789724;
+    alert('Please Allow access To location N');
+    console.log('Found coordinates NITj: ', latitude, longitude);
+
+  form={'lat':latitude,'lng':longitude,csrfmiddlewaretoken: '{{ csrf_token }}'}
+$.ajax({
+url:'/save_location/',
+type:'POST',
+data:form,
+success:function(resp){
+if(resp.status!='success'){
+alert('Failed To get Location');
+alert ("resp: "+resp.name);
+}else{
+alert('Location Tracked Successfully');
+window.location.href='/maps/';
+}
+}
+});
+    // they said no
+  } else if (error.code === 2) {
+  alert('Check Your Network Connection   Position Unavailable');
+    // position unavailable
+  } else if (error.code === 3) {
+  alert('Some Error happened in getting your location');
+    // timeout
+  }
+}
+
+
+
+});
+</script>
+</body>
+</html>
